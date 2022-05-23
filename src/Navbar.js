@@ -1,0 +1,59 @@
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+const Navbar = () => {
+  const state = useSelector((state) => state.handleCart);
+  return (
+    <div>
+      <nav className="navbar navbar-expand-lg bg-dark py-3 shadow-sm">
+        <div className="container">
+          <NavLink className="navbar-brand fw-bold fs-4" to="/">
+            The Shopping Store
+          </NavLink>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
+              <li className="nav-item">
+                <NavLink className="nav-link active" aria-current="page" to="/">
+                  Home
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/products">
+                  All Product
+                </NavLink>
+              </li>
+            </ul>
+            <div className="buttons">
+              <NavLink to="/login" className="btn btn-outline-primary">
+                <i classNameName="fa fa-sign-in me-1"></i>Login
+              </NavLink>
+              <NavLink to="/register" className="btn btn-outline-primary ms-2">
+                <i classNameName="fa fa-user-plus me-1"></i>Register
+              </NavLink>
+              <NavLink to="/cart" className="btn btn-outline-warning ms-2">
+                <i className="fa fa-shopping-cart me-1"></i>({state.length})
+              </NavLink>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <nav className="navbar navbar-expand-lg bg-light py-3 shadow-sm text-align-center justify-content-center">
+        Super Deal! Free shipping on Order Above $50
+      </nav>
+    </div>
+  );
+};
+
+export default Navbar;
